@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-deployment
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress-container
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "shared"
+  name: wordpress-service
+  labels:
+    app: wordpress
+spec:
+  type: LoadBalancer
+  loadBalancerIP: MINIKUBE_IP
+  selector:
+    app: wordpress
+  ports:
+  - name: wordpress
+    port: 5050
+    protocol: TCP
+    targetPort: 80

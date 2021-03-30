@@ -1,0 +1,18 @@
+FROM alpine:3.12.0
+
+RUN apk update && apk add \
+	mysql \
+	mysql-client
+
+RUN mkdir run/mysqld
+
+COPY my.cnf /etc/my.cnf
+RUN chmod 644 /etc/my.cnf
+COPY wordpress_db_setup.sql wordpress_db_setup.sql
+
+RUN mysql_install_db --user=root
+RUN mysqld -u root --bootstrap < wordpress_db_setup.sql
+
+RUN rm wordpress_db_setup.sql
+
+ENTRYPOINT usr/bin/mysqld -u root

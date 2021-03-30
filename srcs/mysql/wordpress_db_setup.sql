@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS wordpress;
+FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON *.* TO 'tapark'@'%' identified by '1234' with grant option;
+FLUSH PRIVILEGES;
