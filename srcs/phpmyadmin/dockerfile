@@ -3,29 +3,29 @@ FROM alpine:3.12.0
 RUN apk update && apk add \
 	nginx \
 	php7 \
-	php7-bcmath \
-	php7-ctype \
-	php7-curl \
 	php7-fpm \
-	php7-gd \
-	php7-iconv \
-	php7-intl \
-	php7-json \
 	php7-mbstring \
-	php7-mcrypt \
-	php7-mysqlnd \
-	php7-opcache \
-	php7-openssl \
+	php7-session \
+	php7-common \
+	php7-iconv \
+	php7-json \
+	php7-gd \
+	php7-curl \
+	php7-xml \
+	php7-mysqli \
+	php7-imap \
+	php7-cgi \
+	fcgi \
 	php7-pdo \
 	php7-pdo_mysql \
-	php7-pdo_pgsql \
-	php7-pdo_sqlite \
-	php7-phar \
-	php7-posix \
-	php7-session \
 	php7-soap \
-	php7-xml \
-	php7-zip \
+	php7-xmlrpc \
+	php7-posix \
+	php7-mcrypt \
+	php7-gettext \
+	php7-ldap \
+	php7-ctype \
+	php7-dom \
 	wget
 
 COPY default.conf /etc/nginx/conf.d/default.conf
@@ -35,12 +35,12 @@ RUN mkdir run/nginx
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.5/phpMyAdmin-4.9.5-all-languages.tar.gz && \
 	tar -xvf phpMyAdmin-4.9.5-all-languages.tar.gz && \
 	rm phpMyAdmin-4.9.5-all-languages.tar.gz && \
-	mv phpMyAdmin-4.9.5-all-languages /var/lib/nginx/html/phpmyadmin
+	mv phpMyAdmin-4.9.5-all-languages /var/www/phpmyadmin
 
-COPY config.inc.php /var/lib/nginx/html/phpmyadmin/config.inc.php
-RUN chmod 705 /var/lib/nginx/html/phpmyadmin/config.inc.php
+COPY config.inc.php /var/www/phpmyadmin/config.inc.php
+RUN chmod 705 /var/www/phpmyadmin/config.inc.php
 
 EXPOSE 80
 
 ENTRYPOINT /usr/sbin/php-fpm7 && \
-		   /usr/sbin/nginx && bin/sh
+		   /usr/sbin/nginx -g "daemon off;"

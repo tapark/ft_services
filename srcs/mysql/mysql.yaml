@@ -22,8 +22,14 @@ spec:
         image: mysql-container
         imagePullPolicy: Never
         ports:
-        - containerPort: 80
-        - containerPort: 443
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-pv
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-pv
+        persistentVolumeClaim:
+          claimName: mysql-pv
 
 ---
 

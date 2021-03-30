@@ -34,7 +34,7 @@ metadata:
     app: phpmyadmin
 spec:
   type: LoadBalancer
-  loadBalancerIP: MINIKUBE_IP
+  loadBalancerIP: 172.23.161.239
   selector:
     app: phpmyadmin
   ports:
