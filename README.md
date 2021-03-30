@@ -5,8 +5,8 @@
  - MSC에서 docker, virtualbox 설치
  - 터미널 입력  
 ~~~C
-  // homebrew 설치
-  rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+// homebrew 설치
+rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
 // minikube 설치
 brew minikube
 // mnikube start경로 지정, local에 설치 시 용량부족 
