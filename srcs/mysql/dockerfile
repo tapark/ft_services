@@ -4,15 +4,14 @@ RUN apk update && apk add \
 	mysql \
 	mysql-client
 
-RUN mkdir run/mysqld
+RUN mkdir -p /run/mysqld
 
 COPY my.cnf /etc/my.cnf
 RUN chmod 644 /etc/my.cnf
-COPY wordpress_db_setup.sql wordpress_db_setup.sql
 
-RUN mysql_install_db --user=root
-RUN mysqld -u root --bootstrap < wordpress_db_setup.sql
+COPY entrypoint.sh /usr/sbin/entrypoint.sh
+RUN chmod +x /usr/sbin/entrypoint.sh
 
-RUN rm wordpress_db_setup.sql
+EXPOSE 3306
 
-ENTRYPOINT usr/bin/mysqld -u root
+ENTRYPOINT ["/usr/sbin/entrypoint.sh"]

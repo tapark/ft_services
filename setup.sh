@@ -26,20 +26,19 @@ sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/wordpress/wordpress.yaml
 
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/phpmyadmin/config.inc.php
 
+# docker images build
+docker build -t nginx-container ./srcs/nginx
+docker build -t mysql-container ./srcs/mysql
+docker build -t phpmyadmin-container ./srcs/phpmyadmin
+docker build -t wordpress-container ./srcs/wordpress
 
 # run metallb
 kubectl apply -f srcs/metallb/metallb.yaml
-# docker images build
-docker build -t nginx-container ./srcs/nginx
-docker build -t phpmyadmin-container ./srcs/phpmyadmin
-docker build -t wordpress-container ./srcs/wordpress
-docker build -t mysql-container ./srcs/mysql
-
 # run
 kubectl apply -f srcs/nginx/nginx.yaml
+kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
-kubectl apply -f srcs/mysql/mysql.yaml
 
 minikube dashboard
 

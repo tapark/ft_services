@@ -9,20 +9,20 @@ spec:
     matchLabels:
       app: mysql
   strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+    type: Recreate
   template:
     metadata:
       labels:
         app: mysql
     spec:
+      restartPolicy: Always
       containers:
       - name: mysql
         image: mysql-container
         imagePullPolicy: Never
         ports:
-        - containerPort: 3306
+        - name: mysql
+          containerPort: 3306
         volumeMounts:
         - name: mysql-pv
           mountPath: /var/lib/mysql

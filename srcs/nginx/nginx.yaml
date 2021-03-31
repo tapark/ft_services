@@ -37,7 +37,7 @@ metadata:
     app: nginx
 spec:
   type: LoadBalancer
-  loadBalancerIP: 172.23.161.239
+  loadBalancerIP: MINIKUBE_IP
   selector:
     app: nginx
   ports:

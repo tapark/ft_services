@@ -1,3 +1,4 @@
+#!/bin/bash
 export MINIKUBE_HOME=/Users/tapark/goinfre
 
 kubectl delete svc --all
@@ -18,3 +19,5 @@ minikube delete
 eval $(minikube docker-env -u)
 
 rm ../Library/VirtualBox/HostInterfaceNetworking-vboxnet0-Dhcpd.leases
+
+eval $(minikube docker-env -u)

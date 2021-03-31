@@ -38,6 +38,10 @@ RUN wget https://wordpress.org/latest.tar.gz && \
 	mv wordpress /var/www/wordpress
 
 COPY wp-config.php /var/www/wp-config.php
+COPY wordpress.sql wordpress.sql
+
+RUN mysql -h mysql-service -D wordpress \
+	-u tapark -p 1234 < wordpress.sql
 
 EXPOSE 80
 
