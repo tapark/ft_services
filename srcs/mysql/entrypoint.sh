@@ -1,11 +1,13 @@
 #!/bin/sh
-mysql_install_db --user=root
+mariadb-install-db -u root
 
-echo "CREATE DATABASE IF NOT EXISTS wordpress;
-FLUSH PRIVILEGES;
-GRANT ALL PRIVILEGES ON *.* TO 'tapark'@'%' IDENTIFIED BY '1234' WITH GRANT OPTION;
-FLUSH PRIVILEGES;" > creat_usr_wpdb.sql
+mysqld -u root & sleep 5
 
-mysqld -u root --bootstrap < creat_usr_wpdb.sql
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
+mysql -u root -e "FLUSH PRIVILEGES;"
+mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'tapark'@'%' IDENTIFIED BY '1234' WITH GRANT OPTION;"
+mysql -u root -e "FLUSH PRIVILEGES;"
 
-mysqld -u root
+mysql -u root wordpress < wordpress.sql
+
+sleep infinite

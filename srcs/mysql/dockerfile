@@ -1,17 +1,19 @@
 FROM alpine:3.12.0
 
 RUN apk update && apk add \
-	mysql \
-	mysql-client
+	mariadb \
+	mariadb-client
 
 RUN mkdir -p /run/mysqld
 
 COPY my.cnf /etc/my.cnf
 RUN chmod 644 /etc/my.cnf
 
-COPY entrypoint.sh /usr/sbin/entrypoint.sh
-RUN chmod +x /usr/sbin/entrypoint.sh
+COPY entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+COPY wordpress.sql wordpress.sql
 
 EXPOSE 3306
 
-ENTRYPOINT ["/usr/sbin/entrypoint.sh"]
+ENTRYPOINT sh entrypoint.sh
