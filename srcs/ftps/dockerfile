@@ -1,0 +1,11 @@
+FROM alpine:3.12.0
+
+RUN apk update && apk add \
+	vsftpd \
+	openssl
+
+COPY vsftpd.conf etc/vsftpd/vsftpd.conf
+
+RUN openssl req -newkey rsa:4096 -nodes -x509 -days 365 \
+	-subj '/C=KR/ST=Seoul/L=42cluster/O=42cursus/OU=ft_services/CN=locahost/emailAddress=tg911022@naver.com' \
+	-keyout /etc/ssl/private/localhost.key -out /etc/ssl/certs/localhost.crt
