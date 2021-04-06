@@ -10,9 +10,11 @@ RUN openssl req -newkey rsa:4096 -nodes -x509 -days 365 \
 	-subj '/C=KR/ST=Seoul/L=42cluster/O=42cursus/OU=ft_services/CN=locahost/emailAddress=tg911022@naver.com' \
 	-keyout /etc/ssl/private/localhost.key -out /etc/ssl/certs/localhost.crt
 
-RUN adduser tapark
-run passwd 1234
+RUN mkdir user_volume
+RUN adduser tapark -h ./user_volume -D
+RUN chown tapark:tapark ./user_volume
+RUN echo "tapark:1234" | chpasswd ./usr/sbin/chpasswd
 
 EXPOSE 20 21 21000
 
-ENTRYPOINT usr/sbin/vsftpd
+ENTRYPOINT vsftpd /etc/vsftpd/vsftpd.conf

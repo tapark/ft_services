@@ -23,14 +23,20 @@ sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/metallb/metallb.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/nginx/nginx.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/phpmyadmin/phpmyadmin.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/wordpress/wordpress.yaml
+sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/ftps/ftps.yaml
 
-sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/phpmyadmin/config.inc.php
+# 설정파일에서..
+sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/nginx/default.conf
+sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/mysql/wordpress.sql
+sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/ftps/vsftpd.conf
+
 
 # docker images build
 docker build -t nginx-container ./srcs/nginx
 docker build -t mysql-container ./srcs/mysql
 docker build -t phpmyadmin-container ./srcs/phpmyadmin
 docker build -t wordpress-container ./srcs/wordpress
+docker build -t ftps-container ./srcs/ftps
 
 # run metallb
 kubectl apply -f srcs/metallb/metallb.yaml
@@ -39,6 +45,7 @@ kubectl apply -f srcs/nginx/nginx.yaml
 kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
+kubectl apply -f srcs/ftps/ftps.yaml
 
 minikube dashboard
 

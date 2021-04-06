@@ -11,11 +11,16 @@ sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/metallb/metallb.yaml
 sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/nginx/nginx.yaml
 sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/phpmyadmin/phpmyadmin.yaml
 sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/wordpress/wordpress.yaml
+sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/ftps/ftps.yaml
 
-sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/phpmyadmin/config.inc.php
+# 설정파일에서..
+sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/nginx/default.conf
+sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/mysql/wordpress.sql
+sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/ftps/vsftpd.conf
 
 minikube stop
 minikube delete
+
 eval $(minikube docker-env -u)
 
 rm ../Library/VirtualBox/HostInterfaceNetworking-vboxnet0-Dhcpd.leases
