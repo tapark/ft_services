@@ -10,4 +10,4 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 
 mysql -u root wordpress < wordpress.sql
 
-sleep infinite
+/telegraf/usr/bin/telegraf & sleep infinite

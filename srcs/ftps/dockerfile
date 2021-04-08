@@ -2,7 +2,8 @@ FROM alpine:3.12.0
 
 RUN apk update && apk add \
 	vsftpd \
-	openssl
+	openssl \
+	wget
 
 COPY vsftpd.conf etc/vsftpd/vsftpd.conf
 
@@ -15,6 +16,16 @@ RUN adduser tapark -h ./user_volume -D
 RUN chown tapark:tapark ./user_volume
 RUN echo "tapark:1234" | chpasswd ./usr/sbin/chpasswd
 
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	tar -xvf telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	rm telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	mv telegraf-1.15.3 telegraf
+
+RUN mkdir -p etc/telegraf
+
+COPY telegraf.conf etc/telegraf/telegraf.conf
+
 EXPOSE 20 21 21000
 
-ENTRYPOINT vsftpd /etc/vsftpd/vsftpd.conf
+ENTRYPOINT /telegraf/usr/bin/telegraf & \
+			vsftpd /etc/vsftpd/vsftpd.conf

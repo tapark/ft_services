@@ -40,7 +40,17 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.5/phpMyAdmin-4.9.5-all-lang
 COPY config.inc.php /var/www/phpmyadmin/config.inc.php
 RUN chmod 705 /var/www/phpmyadmin/config.inc.php
 
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	tar -xvf telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	rm telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	mv telegraf-1.15.3 telegraf
+
+RUN mkdir -p etc/telegraf
+
+COPY telegraf.conf etc/telegraf/telegraf.conf
+
 EXPOSE 80
 
-ENTRYPOINT /usr/sbin/php-fpm7 && \
-		   /usr/sbin/nginx -g "daemon off;"
+ENTRYPOINT /telegraf/usr/bin/telegraf && sleep & \
+			/usr/sbin/php-fpm7 & \
+			/usr/sbin/nginx -g "daemon off;"

@@ -1,6 +1,26 @@
 FROM alpine:3.12.0
 
 RUN apk update && apk add \
-	influxdb \
-	grafana --repository=https://dl-cdn.alpinelinux.org/alpine/latest-stable/community/ \
-	telegraf --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
+	wget
+
+RUN wget https://dl.grafana.com/oss/release/grafana-6.7.2.linux-amd64.tar.gz && \
+	tar -xvf grafana-6.7.2.linux-amd64.tar.gz && \
+	rm grafana-6.7.2.linux-amd64.tar.gz && \
+	mv grafana-6.7.2 grafana
+
+COPY dashboard.yaml grafana/conf/provisioning/dashboards/dashboard.yaml
+COPY datasource.yaml grafana/conf/provisioning/datasources/datasource.yaml
+
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	tar -xvf telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	rm telegraf-1.15.3_static_linux_amd64.tar.gz && \
+	mv telegraf-1.15.3 telegraf
+
+RUN mkdir -p etc/telegraf
+
+COPY telegraf.conf etc/telegraf/telegraf.conf
+
+EXPOSE 3000
+
+ENTRYPOINT telegraf/usr/bin/telegraf & \
+			cd grafana/bin && ./grafana-server

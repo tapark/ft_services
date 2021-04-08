@@ -1,19 +1,8 @@
 FROM alpine:3.12.0
 
 RUN apk update && apk add \
-	mariadb \
-	mariadb-client \
-	wget
-
-RUN mkdir -p /run/mysqld
-
-COPY my.cnf /etc/my.cnf
-RUN chmod 644 /etc/my.cnf
-
-COPY entrypoint.sh entrypoint.sh
-RUN chmod +x entrypoint.sh
-
-COPY wordpress.sql wordpress.sql
+	wget \
+	influxdb --repository http://dl-2.alpinelinux.org/alpine/edge/community/
 
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
 	tar -xvf telegraf-1.15.3_static_linux_amd64.tar.gz && \
@@ -24,6 +13,10 @@ RUN mkdir -p etc/telegraf
 
 COPY telegraf.conf etc/telegraf/telegraf.conf
 
-EXPOSE 3306
+RUN mkdir -p var/lib/influxdb
+
+COPY influxdb.conf etc/influxdb.conf
+
+COPY entrypoint.sh entrypoint.sh
 
 ENTRYPOINT sh entrypoint.sh

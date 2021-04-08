@@ -37,6 +37,8 @@ docker build -t mysql-container ./srcs/mysql
 docker build -t phpmyadmin-container ./srcs/phpmyadmin
 docker build -t wordpress-container ./srcs/wordpress
 docker build -t ftps-container ./srcs/ftps
+docker build -t influxdb-container ./srcs/influxdb
+#docker build -t grafana-container ./srcs/grafana
 
 # run metallb
 kubectl apply -f srcs/metallb/metallb.yaml
@@ -46,8 +48,8 @@ kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
 kubectl apply -f srcs/ftps/ftps.yaml
+kubectl apply -f srcs/influxdb/influxdb.yaml
 
 minikube dashboard
 
-#alpine Linux 버젼 / grafana 버젼 : 확인
-#3.12.0
+#alpine Linux 버젼 : 3.12.0
