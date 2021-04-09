@@ -24,6 +24,7 @@ sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/nginx/nginx.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/phpmyadmin/phpmyadmin.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/wordpress/wordpress.yaml
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/ftps/ftps.yaml
+sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/grafana/grafana.yaml
 
 # 설정파일에서..
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/nginx/default.conf
@@ -38,7 +39,7 @@ docker build -t phpmyadmin-container ./srcs/phpmyadmin
 docker build -t wordpress-container ./srcs/wordpress
 docker build -t ftps-container ./srcs/ftps
 docker build -t influxdb-container ./srcs/influxdb
-#docker build -t grafana-container ./srcs/grafana
+docker build -t grafana-container ./srcs/grafana
 
 # run metallb
 kubectl apply -f srcs/metallb/metallb.yaml
@@ -49,6 +50,7 @@ kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
 kubectl apply -f srcs/wordpress/wordpress.yaml
 kubectl apply -f srcs/ftps/ftps.yaml
 kubectl apply -f srcs/influxdb/influxdb.yaml
+kubectl apply -f srcs/grafana/grafana.yaml
 
 minikube dashboard
 
