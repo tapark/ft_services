@@ -5,7 +5,7 @@ RUN apk update && apk add \
 	grafana --repository https://dl-cdn.alpinelinux.org/alpine/latest-stable/community/
 
 
-COPY dashboard.yaml usr/share/grafana/conf/provisioning/dashboards/dashboard.yaml
+COPY dashboards usr/share/grafana/conf/provisioning/dashboards
 COPY datasource.yaml usr/share/grafana/conf/provisioning/datasources/datasource.yaml
 
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
