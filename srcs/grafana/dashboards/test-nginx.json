@@ -1,0 +1,877 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": "-- Grafana --",
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "limit": 100,
+		  "name": "Annotations & Alerts",
+		  "showIn": 0,
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"iteration": 1618122856299,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"mappings": [],
+			"max": 4,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 12,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true
+		},
+		"pluginVersion": "7.3.6",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "system",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"queryType": "randomWalk",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"n_cpus"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": []
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Number of CPU",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "#6ED0E0",
+				  "value": 20
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 40
+				},
+				{
+				  "color": "#EF843C",
+				  "value": 60
+				},
+				{
+				  "color": "#E24D42",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 4,
+		  "y": 0
+		},
+		"id": 4,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true
+		},
+		"pluginVersion": "7.3.6",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "disk",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"used_percent"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"used %"
+				  ],
+				  "type": "alias"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "host",
+				"operator": "=~",
+				"value": "/^$server$/"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Disk Use (%)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {
+			  "align": null,
+			  "filterable": false
+			},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "#6ED0E0",
+				  "value": 20
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 40
+				},
+				{
+				  "color": "#EF843C",
+				  "value": 60
+				},
+				{
+				  "color": "#E24D42",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 8,
+		  "y": 0
+		},
+		"id": 2,
+		"options": {
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true
+		},
+		"pluginVersion": "7.3.6",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  }
+			],
+			"hide": false,
+			"measurement": "cpu",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"query": "SELECT mean(\"usage_guest\") AS \"guest\", mean(\"usage_guest_nice\") AS \"guest_nice\", mean(\"usage_idle\") AS \"idle\", mean(\"usage_iowait\") AS \"iowait\", mean(\"usage_irq\") AS \"irq\", mean(\"usage_nice\") AS \"nice\", mean(\"usage_softirq\") AS \"softirq\", mean(\"usage_steal\") AS \"steal\", mean(\"usage_system\") AS \"system\", mean(\"usage_user\") AS \"user\" FROM \"autogen\".\"cpu\" WHERE (\"host\" =~ /^$server$/) AND $timeFilter GROUP BY time($__interval)",
+			"queryType": "randomWalk",
+			"rawQuery": false,
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"usage_idle"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					" * -1 + 100"
+				  ],
+				  "type": "math"
+				},
+				{
+				  "params": [
+					"user"
+				  ],
+				  "type": "alias"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "host",
+				"operator": "=~",
+				"value": "/^$server$/"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "CPU Use (%)",
+		"type": "gauge"
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"mappings": [],
+			"max": 100,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "#6ED0E0",
+				  "value": 20
+				},
+				{
+				  "color": "#EAB839",
+				  "value": 40
+				},
+				{
+				  "color": "#EF843C",
+				  "value": 60
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 6,
+		  "w": 4,
+		  "x": 12,
+		  "y": 0
+		},
+		"id": 8,
+		"options": {
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true
+		},
+		"pluginVersion": "7.3.6",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "mem",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"queryType": "randomWalk",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"available_percent"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"*-1 + 100"
+				  ],
+				  "type": "math"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "host",
+				"operator": "=~",
+				"value": "/^$server$/"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Memory Use (%)",
+		"type": "gauge"
+	  },
+	  {
+		"aliasColors": {},
+		"bars": false,
+		"dashLength": 10,
+		"dashes": false,
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"fill": 1,
+		"fillGradient": 0,
+		"gridPos": {
+		  "h": 8,
+		  "w": 16,
+		  "x": 0,
+		  "y": 6
+		},
+		"hiddenSeries": false,
+		"id": 6,
+		"legend": {
+		  "avg": false,
+		  "current": false,
+		  "hideEmpty": false,
+		  "hideZero": false,
+		  "max": false,
+		  "min": false,
+		  "show": true,
+		  "total": false,
+		  "values": false
+		},
+		"lines": true,
+		"linewidth": 1,
+		"nullPointMode": "null",
+		"options": {
+		  "alertThreshold": true
+		},
+		"percentage": false,
+		"pluginVersion": "7.3.6",
+		"pointradius": 2,
+		"points": false,
+		"renderer": "flot",
+		"seriesOverrides": [],
+		"spaceLength": 10,
+		"stack": false,
+		"steppedLine": false,
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "5m"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "diskio",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"queryType": "randomWalk",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"read_time"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"read_time"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"write_time"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"write_time"
+				  ],
+				  "type": "alias"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "host",
+				"operator": "=~",
+				"value": "/^$server$/"
+			  }
+			]
+		  }
+		],
+		"thresholds": [],
+		"timeFrom": null,
+		"timeRegions": [
+		  {
+			"colorMode": "background6",
+			"fill": true,
+			"fillColor": "rgba(234, 112, 112, 0.12)",
+			"line": false,
+			"lineColor": "rgba(237, 46, 24, 0.60)",
+			"op": "time"
+		  }
+		],
+		"timeShift": null,
+		"title": "Disk I/O Read & Write Time",
+		"tooltip": {
+		  "shared": true,
+		  "sort": 0,
+		  "value_type": "individual"
+		},
+		"type": "graph",
+		"xaxis": {
+		  "buckets": null,
+		  "mode": "time",
+		  "name": null,
+		  "show": true,
+		  "values": []
+		},
+		"yaxes": [
+		  {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  },
+		  {
+			"format": "short",
+			"label": null,
+			"logBase": 1,
+			"max": null,
+			"min": null,
+			"show": true
+		  }
+		],
+		"yaxis": {
+		  "align": false,
+		  "alignLevel": null
+		}
+	  },
+	  {
+		"datasource": "InfluxDB",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 8,
+		  "w": 16,
+		  "x": 0,
+		  "y": 14
+		},
+		"id": 10,
+		"options": {
+		  "displayMode": "gradient",
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showUnfilled": true
+		},
+		"pluginVersion": "7.3.6",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "processes",
+			"orderByTime": "ASC",
+			"policy": "autogen",
+			"queryType": "randomWalk",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"dead"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"dead"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"blocked"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"blocked"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"unknown"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"unknown"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"zombies"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"zombies"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"running"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"running"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"sleeping"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"sleeping"
+				  ],
+				  "type": "alias"
+				}
+			  ],
+			  [
+				{
+				  "params": [
+					"total_threads"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				},
+				{
+				  "params": [
+					"total_threads"
+				  ],
+				  "type": "alias"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "host",
+				"operator": "=~",
+				"value": "/^$server$/"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "Process Status",
+		"type": "bargauge"
+	  }
+	],
+	"refresh": "",
+	"schemaVersion": 26,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+	  "list": [
+		{
+		  "allValue": null,
+		  "current": {
+			"selected": true,
+			"text": "nginx-deployment-864d66d8d7-d9bhd",
+			"value": "nginx-deployment-864d66d8d7-d9bhd"
+		  },
+		  "datasource": "InfluxDB",
+		  "definition": "",
+		  "error": null,
+		  "hide": 0,
+		  "includeAll": false,
+		  "label": "server",
+		  "multi": false,
+		  "name": "server",
+		  "options": [],
+		  "query": "SHOW TAG VALUES FROM system WITH KEY=host",
+		  "refresh": 2,
+		  "regex": "/nginx*/",
+		  "skipUrlSync": false,
+		  "sort": 0,
+		  "tagValuesQuery": "",
+		  "tags": [],
+		  "tagsQuery": "",
+		  "type": "query",
+		  "useTags": false
+		}
+	  ]
+	},
+	"time": {
+	  "from": "now-1h",
+	  "to": "now"
+	},
+	"timepicker": {},
+	"timezone": "",
+	"title": "test-nginx",
+	"uid": "hRLlTgXGz",
+	"version": 1
+  }

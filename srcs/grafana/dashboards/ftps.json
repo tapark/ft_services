@@ -16,8 +16,7 @@
 	"editable": true,
 	"gnetId": 5955,
 	"graphTooltip": 1,
-	"id": 5,
-	"iteration": 1618124706680,
+	"iteration": 1618134482143,
 	"links": [],
 	"panels": [
 	  {
@@ -4959,7 +4958,6 @@
 		  "name": "datasource",
 		  "options": [],
 		  "query": "influxdb",
-		  "queryValue": "",
 		  "refresh": 1,
 		  "regex": "",
 		  "skipUrlSync": false,
@@ -4969,8 +4967,8 @@
 		  "allValue": null,
 		  "current": {
 			"selected": false,
-			"text": "nginx-deployment-864d66d8d7-d9bhd",
-			"value": "nginx-deployment-864d66d8d7-d9bhd"
+			"text": "ftps-deployment-547ddd7845-lsrgl",
+			"value": "ftps-deployment-547ddd7845-lsrgl"
 		  },
 		  "datasource": "InfluxDB",
 		  "definition": "",
@@ -4983,7 +4981,7 @@
 		  "options": [],
 		  "query": "SHOW TAG VALUES FROM system WITH KEY=host",
 		  "refresh": 1,
-		  "regex": "/nginx*/",
+		  "regex": "/ftps*/",
 		  "skipUrlSync": false,
 		  "sort": 0,
 		  "tagValuesQuery": "",
@@ -5219,7 +5217,7 @@
 	  ]
 	},
 	"timezone": "browser",
-	"title": "nginx",
-	"uid": "kp7V-mXGk",
-	"version": 2
+	"title": "ftps",
+	"uid": "qBBaxmXGk",
+	"version": 1
   }

@@ -16,8 +16,8 @@
 	"editable": true,
 	"gnetId": 5955,
 	"graphTooltip": 1,
-	"id": 5,
-	"iteration": 1618124706680,
+	"id": 2,
+	"iteration": 1618122282485,
 	"links": [],
 	"panels": [
 	  {
@@ -4937,10 +4937,13 @@
 		}
 	  }
 	],
-	"refresh": "1m",
+	"refresh": "5s",
 	"schemaVersion": 26,
 	"style": "dark",
-	"tags": [],
+	"tags": [
+	  "influxdb",
+	  "telegraf"
+	],
 	"templating": {
 	  "list": [
 		{
@@ -4959,7 +4962,6 @@
 		  "name": "datasource",
 		  "options": [],
 		  "query": "influxdb",
-		  "queryValue": "",
 		  "refresh": 1,
 		  "regex": "",
 		  "skipUrlSync": false,
@@ -4969,8 +4971,8 @@
 		  "allValue": null,
 		  "current": {
 			"selected": false,
-			"text": "nginx-deployment-864d66d8d7-d9bhd",
-			"value": "nginx-deployment-864d66d8d7-d9bhd"
+			"text": "phpmyadmin-deployment-bb7c77855-6fplg",
+			"value": "phpmyadmin-deployment-bb7c77855-6fplg"
 		  },
 		  "datasource": "InfluxDB",
 		  "definition": "",
@@ -4983,7 +4985,7 @@
 		  "options": [],
 		  "query": "SHOW TAG VALUES FROM system WITH KEY=host",
 		  "refresh": 1,
-		  "regex": "/nginx*/",
+		  "regex": "/phpmyadmin*/",
 		  "skipUrlSync": false,
 		  "sort": 0,
 		  "tagValuesQuery": "",
@@ -5101,7 +5103,6 @@
 			}
 		  ],
 		  "query": "1s,5s,10s,15s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d,60d,90d",
-		  "queryValue": "",
 		  "refresh": 2,
 		  "skipUrlSync": false,
 		  "type": "interval"
@@ -5219,7 +5220,7 @@
 	  ]
 	},
 	"timezone": "browser",
-	"title": "nginx",
-	"uid": "kp7V-mXGk",
-	"version": 2
+	"title": "phpmyadmin",
+	"uid": "5OZU1mXGz",
+	"version": 3
   }

@@ -19,12 +19,14 @@ spec:
     spec:
       containers:
       - name: ftps
-        image: ftps-container
+        image: ftps
         imagePullPolicy: Never
         ports:
         - containerPort: 20
         - containerPort: 21
         - containerPort: 21000
+        - containerPort: 21001
+        - containerPort: 21002
 
 ---
 
@@ -38,7 +40,7 @@ metadata:
     app: ftps
 spec:
   type: LoadBalancer
-  loadBalancerIP: 192.168.99.100
+  loadBalancerIP: MINIKUBE_IP
   selector:
     app: ftps
   ports:
@@ -48,6 +50,12 @@ spec:
   - name: ftps-server
     port: 21
     targetPort: 21
-  - name: ftps-psv
+  - name: ftps-psv0
     port: 21000
     targetPort: 21000
+  - name: ftps-psv1
+    port: 21001
+    targetPort: 21001
+  - name: ftps-psv2
+    port: 21002
+    targetPort: 21002

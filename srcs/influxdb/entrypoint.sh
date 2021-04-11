@@ -1,5 +1,5 @@
 #!/bin/sh
-/usr/sbin/influxd & sleep 5
+/usr/sbin/influxd -config /etc/influxdb.conf & sleep 5
 
 influx -execute "CREATE DATABASE grafana"
 influx -execute "CREATE USER tapark WITH PASSWORD '1234' with all privileges"

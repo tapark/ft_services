@@ -4,9 +4,6 @@ export MINIKUBE_HOME=/Users/tapark/goinfre
 # 가상환경(VirtualBox)에서 minikube 시작(실행)
 # MSC에서 virtualbox, docker 설치 가능
 minikube start --driver=virtualbox
-# local의 docker를 minikube의 docker와 연결
-# minikube ssh의 도커 이미지/컨테이너들을 local에서 핸들링할수있음
-eval $(minikube -p minikube docker-env)
 # minikube 상태확인
 minikube status
 # minikube ip 명령어로 ip 확인 및 저장
@@ -31,19 +28,20 @@ sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/nginx/default.conf
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/mysql/wordpress.sql
 sed -i '' "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/ftps/vsftpd.conf
 
+# local의 docker를 minikube의 docker와 연결
+eval $(minikube -p minikube docker-env)
 
 # docker images build
-docker build -t nginx-container ./srcs/nginx
-docker build -t mysql-container ./srcs/mysql
-docker build -t phpmyadmin-container ./srcs/phpmyadmin
-docker build -t wordpress-container ./srcs/wordpress
-docker build -t ftps-container ./srcs/ftps
-docker build -t influxdb-container ./srcs/influxdb
-docker build -t grafana-container ./srcs/grafana
+docker build -t nginx ./srcs/nginx
+docker build -t mysql ./srcs/mysql
+docker build -t phpmyadmin ./srcs/phpmyadmin
+docker build -t wordpress ./srcs/wordpress
+docker build -t ftps ./srcs/ftps
+docker build -t influxdb ./srcs/influxdb
+docker build -t grafana ./srcs/grafana
 
-# run metallb
-kubectl apply -f srcs/metallb/metallb.yaml
 # run
+kubectl apply -f srcs/metallb/metallb.yaml
 kubectl apply -f srcs/nginx/nginx.yaml
 kubectl apply -f srcs/mysql/mysql.yaml
 kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml

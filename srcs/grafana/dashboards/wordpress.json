@@ -16,8 +16,8 @@
 	"editable": true,
 	"gnetId": 5955,
 	"graphTooltip": 1,
-	"id": 5,
-	"iteration": 1618124706680,
+	"id": 3,
+	"iteration": 1618124678773,
 	"links": [],
 	"panels": [
 	  {
@@ -4959,7 +4959,6 @@
 		  "name": "datasource",
 		  "options": [],
 		  "query": "influxdb",
-		  "queryValue": "",
 		  "refresh": 1,
 		  "regex": "",
 		  "skipUrlSync": false,
@@ -4969,8 +4968,8 @@
 		  "allValue": null,
 		  "current": {
 			"selected": false,
-			"text": "nginx-deployment-864d66d8d7-d9bhd",
-			"value": "nginx-deployment-864d66d8d7-d9bhd"
+			"text": "wordpress-deployment-5f4bfb8565-bs2g8",
+			"value": "wordpress-deployment-5f4bfb8565-bs2g8"
 		  },
 		  "datasource": "InfluxDB",
 		  "definition": "",
@@ -4983,7 +4982,7 @@
 		  "options": [],
 		  "query": "SHOW TAG VALUES FROM system WITH KEY=host",
 		  "refresh": 1,
-		  "regex": "/nginx*/",
+		  "regex": "/wordpress*/",
 		  "skipUrlSync": false,
 		  "sort": 0,
 		  "tagValuesQuery": "",
@@ -5219,7 +5218,7 @@
 	  ]
 	},
 	"timezone": "browser",
-	"title": "nginx",
-	"uid": "kp7V-mXGk",
+	"title": "wordpress",
+	"uid": "RhIcbmXGz",
 	"version": 2
   }

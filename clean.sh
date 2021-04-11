@@ -22,8 +22,6 @@ sed -i '' "s/$MINIKUBE_IP/MINIKUBE_IP/g" ./srcs/ftps/vsftpd.conf
 minikube stop
 minikube delete
 
-eval $(minikube docker-env -u)
-
 rm ../Library/VirtualBox/HostInterfaceNetworking-vboxnet0-Dhcpd.leases
 
 eval $(minikube docker-env -u)

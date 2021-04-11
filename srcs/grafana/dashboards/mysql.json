@@ -16,8 +16,8 @@
 	"editable": true,
 	"gnetId": 5955,
 	"graphTooltip": 1,
-	"id": 5,
-	"iteration": 1618124706680,
+	"id": 6,
+	"iteration": 1618124740458,
 	"links": [],
 	"panels": [
 	  {
@@ -4969,8 +4969,8 @@
 		  "allValue": null,
 		  "current": {
 			"selected": false,
-			"text": "nginx-deployment-864d66d8d7-d9bhd",
-			"value": "nginx-deployment-864d66d8d7-d9bhd"
+			"text": "mysql-deployment-6c889b4d9-w7bz7",
+			"value": "mysql-deployment-6c889b4d9-w7bz7"
 		  },
 		  "datasource": "InfluxDB",
 		  "definition": "",
@@ -4983,7 +4983,7 @@
 		  "options": [],
 		  "query": "SHOW TAG VALUES FROM system WITH KEY=host",
 		  "refresh": 1,
-		  "regex": "/nginx*/",
+		  "regex": "/mysql*/",
 		  "skipUrlSync": false,
 		  "sort": 0,
 		  "tagValuesQuery": "",
@@ -5219,7 +5219,7 @@
 	  ]
 	},
 	"timezone": "browser",
-	"title": "nginx",
-	"uid": "kp7V-mXGk",
+	"title": "mysql",
+	"uid": "ZbWv-iuMk",
 	"version": 2
   }

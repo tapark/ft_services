@@ -18,7 +18,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: mysql
-        image: mysql-container
+        image: mysql
         imagePullPolicy: Never
         ports:
         - name: mysql
