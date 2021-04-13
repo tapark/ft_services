@@ -16,8 +16,7 @@
 	"editable": true,
 	"gnetId": 5955,
 	"graphTooltip": 1,
-	"id": 2,
-	"iteration": 1618122282485,
+	"iteration": 1618311952249,
 	"links": [],
 	"panels": [
 	  {
@@ -4940,10 +4939,7 @@
 	"refresh": "5s",
 	"schemaVersion": 26,
 	"style": "dark",
-	"tags": [
-	  "influxdb",
-	  "telegraf"
-	],
+	"tags": [],
 	"templating": {
 	  "list": [
 		{
@@ -4971,8 +4967,8 @@
 		  "allValue": null,
 		  "current": {
 			"selected": false,
-			"text": "phpmyadmin-deployment-bb7c77855-6fplg",
-			"value": "phpmyadmin-deployment-bb7c77855-6fplg"
+			"text": "phpmyadmin-deployment-6b88cfc749-5lhc9",
+			"value": "phpmyadmin-deployment-6b88cfc749-5lhc9"
 		  },
 		  "datasource": "InfluxDB",
 		  "definition": "",
@@ -5222,5 +5218,5 @@
 	"timezone": "browser",
 	"title": "phpmyadmin",
 	"uid": "5OZU1mXGz",
-	"version": 3
+	"version": 1
   }

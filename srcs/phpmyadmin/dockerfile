@@ -51,6 +51,6 @@ COPY telegraf.conf etc/telegraf/telegraf.conf
 
 EXPOSE 80
 
-ENTRYPOINT /telegraf/usr/bin/telegraf && sleep & \
-			/usr/sbin/php-fpm7 & \
+ENTRYPOINT /telegraf/usr/bin/telegraf & \
+			/usr/sbin/php-fpm7 && \
 			/usr/sbin/nginx -g "daemon off;"

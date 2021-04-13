@@ -10,4 +10,6 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 
 mysql -u root wordpress < wordpress.sql
 
-/telegraf/usr/bin/telegraf & sleep infinite
+usr/bin/mysqladmin -u root shutdown
+
+/telegraf/usr/bin/telegraf & /usr/bin/mysqld --datadir="/var/lib/mysql"
