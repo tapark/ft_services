@@ -5,6 +5,8 @@ RUN apk update && apk add \
 	openssl \
 	wget
 
+COPY health_check.sh health_check.sh
+
 COPY vsftpd.conf etc/vsftpd/vsftpd.conf
 
 RUN openssl req -newkey rsa:4096 -nodes -x509 -days 365 \

@@ -21,6 +21,13 @@ spec:
       - name: wordpress
         image: wordpress
         imagePullPolicy: Never
+        livenessProbe:
+            exec:
+              command:
+              - sh
+              - health_check.sh
+            initialDelaySeconds: 10
+            periodSeconds: 10
         ports:
         - containerPort: 80
 

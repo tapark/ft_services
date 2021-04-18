@@ -5,6 +5,8 @@ RUN apk update && apk add \
 	mariadb-client \
 	wget
 
+COPY health_check.sh health_check.sh
+
 RUN mkdir -p /run/mysqld
 
 COPY my.cnf /etc/my.cnf

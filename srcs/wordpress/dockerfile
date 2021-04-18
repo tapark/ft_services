@@ -29,6 +29,8 @@ RUN apk update && apk add \
 	mysql-client \
 	wget
 
+COPY health_check.sh health_check.sh
+
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir run/nginx

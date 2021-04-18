@@ -4,6 +4,7 @@ RUN apk update && apk add \
 	wget \
 	grafana --repository https://dl-cdn.alpinelinux.org/alpine/latest-stable/community/
 
+COPY health_check.sh health_check.sh
 
 COPY dashboards usr/share/grafana/conf/provisioning/dashboards
 COPY datasource.yaml usr/share/grafana/conf/provisioning/datasources/datasource.yaml

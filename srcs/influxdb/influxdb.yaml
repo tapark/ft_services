@@ -20,6 +20,13 @@ spec:
       - name: influxdb
         image: influxdb
         imagePullPolicy: Never
+        livenessProbe:
+            exec:
+              command:
+              - sh
+              - health_check.sh
+            initialDelaySeconds: 10
+            periodSeconds: 10
         ports:
         - name: influxdb
           containerPort: 8086

@@ -4,6 +4,8 @@ RUN apk update && apk add \
 	wget \
 	influxdb --repository http://dl-2.alpinelinux.org/alpine/edge/community/
 
+COPY health_check.sh health_check.sh
+
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.15.3_static_linux_amd64.tar.gz && \
 	tar -xvf telegraf-1.15.3_static_linux_amd64.tar.gz && \
 	rm telegraf-1.15.3_static_linux_amd64.tar.gz && \
