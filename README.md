@@ -20,7 +20,7 @@ bash clean.sh
  |grafana|LoadBalancerIP|3000|influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화<br>(id : admin / pw : admin)|  
   - 각 docker images는 alpine linux를 base로 하여 build
   - setup.sh, clean.sh 에서 MINIKUBE_IP를 유동적으로 관리하여, 클러스터IP가 변경되거나 다른 환경에서 실행시에도 해당하는 IP가 적용될 수 있게 설계함
-  - livenessProbe로 서비스(컨테이너)나 구동중인 앱이 비정상 적으로 종료될 시 해당 컨테이너를 재시작할 수 있도록 설정  
+  - livenessProbe로 서비스(컨테이너)나 구동중인 앱이 비정상적으로 종료될 시 해당 컨테이너를 재시작할 수 있도록 설정  
   <img width="1000" alt="service" src="https://user-images.githubusercontent.com/67908647/115204290-47816b00-a133-11eb-88da-3973a1ae95c0.png">
 
 # minikube + docker 초기 설정
