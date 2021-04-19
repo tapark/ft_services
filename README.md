@@ -1,5 +1,5 @@
 # ft_services
-<img src="https://user-images.githubusercontent.com/67908647/115196427-d9d14100-a12a-11eb-94e3-321f49bdfaee.png"  width="700" height="370">
+<img src="https://user-images.githubusercontent.com/67908647/115196427-d9d14100-a12a-11eb-94e3-321f49bdfaee.png"  width="400" height="300">
   
 # minikube + docker 초기 설정
 ## 1. MacOS (cluster)
