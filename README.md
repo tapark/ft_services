@@ -1,9 +1,9 @@
 # ft_services
 ## 1. 실행
 ~~~bash
-//실행
+#실행
 git clone https://github.com/tapark/ft_services.git && cd ft_services && bash setup.sh
-//초기화
+#초기화
 bash clean.sh
 ~~~
 ## 2. 설명
