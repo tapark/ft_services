@@ -17,7 +17,10 @@ bash clean.sh
  |wordpress|LoadBalancerIP|5050|mysql 서버와 연동, 초기설정과 여러명의 유저가 db형태로 저장되어 적용되어있는 상태<br>(id : tapark / pw : 1234)|
  |phpmyadmin|LoadBalancerIP|5000|mysql 서버와 연동, nginx에서 porxy_pass와 http_head로 reverse proxy<br>(id : tapark / pw : 1234)|
  |ftps|LoadBalancerIP|21|컨테이너 내의 user_volume을 루트 저장소로 지정<br>(ip : minikube_ip / id : tapark / pw : 1234 / port : 21)
- |grafana|LoadBalancerIP|3000|influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화<br>(id : admin / pw : admin)|
+ |grafana|LoadBalancerIP|3000|influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화<br>(id : admin / pw : admin)|  
+  - 각 docker images는 alpine linux를 base로 하여 build
+  - setup.sh, clean.sh 에서 MINIKUBE_IP를 유동적으로 관리하여, 클러스터IP가 변경되거나 다른 환경에서 실행시에도 해당하는 IP가 적용될 수 있게 설계함
+  - livenessProbe로 서비스(컨테이너)나 컨테이너에서 구동중이 앱이 비정상 적으로 종료될 시 해당 컨테이너를 재시작할 수 있도록 설정
 
 # minikube + docker 초기 설정
 ## 1. MacOS (cluster)
