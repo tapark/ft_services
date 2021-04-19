@@ -8,7 +8,7 @@ bash clean.sh
 ~~~
 ## 2. 설명
 <img src="https://user-images.githubusercontent.com/67908647/115196427-d9d14100-a12a-11eb-94e3-321f49bdfaee.png"  width="400"> <img src="https://user-images.githubusercontent.com/67908647/115196763-3df40500-a12b-11eb-88ae-9b3287f7c69c.png"  width="400">
- |service|type|port|description|
+ |service|type|  port  |description|
  |-------|--------|-----------|-------------------------------|
  |Metallb|LoadBalancer||LoadBalancer를 통한 각 서비스 접근 관리 및 단일 ip 사용(minikube ip)|
  |mysql|ClusterIP||persisatent_volume 으로 wordpress, phpmyadmin과 연동|
