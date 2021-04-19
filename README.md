@@ -1,6 +1,6 @@
 # ft_services
 ## 1. 실행
-~~~zsh
+~~~bash
 git clone https://github.com/tapark/ft_services.git && cd ft_services && bash setup.sh
 ~~~
 ## 2. 설명
