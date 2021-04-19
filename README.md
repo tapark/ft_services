@@ -14,20 +14,11 @@ bash clean.sh
  |mysql|ClusterIP||persisatent_volume 으로 wordpress, phpmyadmin과 연동|
  |influxdb|ClusterIP||persisatent_volume 으로 각 서비스(컨테이너)들의 상태를 telegraf를 통해 시계열 데이터 정보로 저장|
  |nginx|LoadBalancerIP|80<br>443|http -> https(301 redirect)<br>minikube_ip/wordpress -> minikube_ip:5050(307 redirect)<br>minikube_ip/phpmyadmin -> minikube_ip:5000(reverse proxy)|
- |wordpress|LoadBalancerIP|5050|mysql 서버와 연동, 초기설정과 여러명의 유저가 db형태로 저장되어 적용되어있는 상태 (id : tapark / pw : 1234)|
- |phpmyadmin|LoadBalancerIP|5000|mysql 서버와 연동, nginx에서 porxy_pass와 http_head로 reverse proxy (id : tapark / pw : 1234)|
- |ftps|LoadBalancerIP|21|컨테이너 내의 user_volume을 루트 저장소로 지정, ip : minikube_ip / id : tapark / pw : 1234 / port : 21 로 접근가능|
- |grafana|LoadBalancerIP|3000|influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화(id : admin / pw : admin)|
+ |wordpress|LoadBalancerIP|5050|mysql 서버와 연동, 초기설정과 여러명의 유저가 db형태로 저장되어 적용되어있는 상태<br>(id : tapark / pw : 1234)|
+ |phpmyadmin|LoadBalancerIP|5000|mysql 서버와 연동, nginx에서 porxy_pass와 http_head로 reverse proxy<br>(id : tapark / pw : 1234)|
+ |ftps|LoadBalancerIP|21|컨테이너 내의 user_volume을 루트 저장소로 지정<br>(ip : minikube_ip / id : tapark / pw : 1234 / port : 21)
+ |grafana|LoadBalancerIP|3000|influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화<br>(id : admin / pw : admin)|
 
- - Metallb : LoadBalancer를 통한 각 서비스 접근 관리 및 단일 ip 사용(minikube ip)
- - mysql : clusterIP, persisatent_volume 으로 wordpress, phpmyadmin과 연동
- - influxdb : clusterIP, persisatent_volume 으로 각 서비스(컨테이너)들의 상태를 telegraf를 통해 시계열 데이터 정보로 저장
- - nginx(80, 443) : http -> https(301 redirect), /wordpress -> ip:5050(307 redirect), /phpmyadmin -> ip:5000(reverse proxy)
- - wordpress(5050) : mysql 서버와 연동, 초기설정과 여러명의 유저가 db형태로 저장되어 적용되어있는 상태 (id : tapark / pw : 1234)
- - phpmyadmin(5000) : mysql 서버와 연동, nginx에서 porxy_pass와 http_head로 reverse proxy (id : tapark / pw : 1234)
- - ftps(21) : 컨테이너 내의 user_volume을 루트 저장소로 지정, ip : minikube_ip / id : tapark / pw : 1234 / port : 21 로 접근가능
- - grafana(3000) : influxdb에 수집된 db를 통한 각 서비스(컨테이너)의 상태 시각화(id : admin / pw : admin)
-   
 # minikube + docker 초기 설정
 ## 1. MacOS (cluster)
  - MSC에서 docker, virtualbox 설치
